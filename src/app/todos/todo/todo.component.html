@@ -1,0 +1,10 @@
+<button *ngIf="todo.completed === false" (click)="complete()">
+  <img src="assets/icons/task_pending.svg" alt="delete" />
+</button>
+<button *ngIf="todo.completed === true" (click)="reopen()">
+  <img src="assets/icons/task_completed.svg" alt="delete" />
+</button>
+<span>{{ todo.description }}</span>
+<button (click)="remove()" class="remove">
+  <img src="assets/icons/delete.svg" alt="delete" />
+</button>

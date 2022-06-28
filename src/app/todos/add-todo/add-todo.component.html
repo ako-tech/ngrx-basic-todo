@@ -1,0 +1,11 @@
+<form [formGroup]="addForm" (ngSubmit)="add()">
+  <input
+    type="text"
+    name="description"
+    formControlName="description"
+    autocomplete="off"
+  />
+  <button type="submit" [disabled]="addForm.invalid || addForm.pristine">
+    <img src="assets/icons/plus.svg" alt="" />
+  </button>
+</form>

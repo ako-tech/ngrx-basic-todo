@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  margin-bottom: var(--base-separation);
+  padding: var(--half-separation);
+  align-items: center;
+  border-radius: 4px;
+
+  &.completed {
+    opacity: 0.5;
+
+    span {
+      text-decoration: line-through;
+    }
+  }
+}
+
+span {
+  flex-grow: 1;
+  padding: 0 var(--base-separation)
+}
+
+button {
+  display: grid;
+  place-items: center;
+  background: none;
+  border: none;
+
+  &.remove{
+    opacity: 0.7;
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+}
