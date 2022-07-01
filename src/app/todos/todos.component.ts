@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { createTodo, initialTodos, Todo } from './model';
-import { TodosPageActions } from './state';
+import { TodosPageActions, TodosSelectors } from './state';
 
 @Component({
   selector: 'ako-todos',
@@ -10,11 +11,11 @@ import { TodosPageActions } from './state';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodosComponent implements OnInit {
-  todos: Todo[] = [];
+  todos$: Observable<Todo[]> = this.store.select(TodosSelectors.todos);
 
-  get hasCompletedTodos(): boolean {
-    return this.todos.some((todo) => todo.completed);
-  }
+  hasCompletedTodos$: Observable<boolean> = this.store.select(
+    TodosSelectors.hasCompletedTodos
+  );
 
   constructor(private store: Store) {}
 

@@ -1,13 +1,17 @@
 <h1>Lista de Tareas</h1>
 <ako-add-todo (added)="addTodo($event)"></ako-add-todo>
 <ako-todo
-  *ngFor="let todo of todos"
+  *ngFor="let todo of todos$ | async"
   [todo]="todo"
   (removed)="removeTodo(todo)"
   (reopened)="markAsPending(todo)"
   (completed)="markAsCompleted(todo)"
 ></ako-todo>
 
-<button class="remove-all" *ngIf="hasCompletedTodos" (click)="clearCompleted()">
+<button
+  class="remove-all"
+  *ngIf="hasCompletedTodos$ | async"
+  (click)="clearCompleted()"
+>
   Eliminar Completados
 </button>
