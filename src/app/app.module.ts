@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, TodosModule, StoreModule.forRoot({}, {})],
+  imports: [BrowserModule, TodosModule, StoreModule.forRoot({})],
   providers: [],
   bootstrap: [AppComponent],
 })
