@@ -6,8 +6,8 @@ El repositorio esta divido en ramas, cada una de las cuales se corresponde con u
 
 ## Enlaces de los Videos
 
-@ngrx/store [aquí](https://youtu.be/btFk-R3tVjo)
-@ngrx/effects _En producción_
+- [@ngrx/store](https://youtu.be/btFk-R3tVjo)
+- @ngrx/effects _En producción_
 
 ## Ramas (Branches)
 
