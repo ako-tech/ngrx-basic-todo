@@ -1,27 +1,30 @@
-# Project
+# Aplicación de Tareas de la serie de videos de NgRx
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
+Esta es una aplicación básica de tareas (To Do App) usada en la serie de videos del canal para explicar el funcionamiento de las librerías store y effects de NgRx para Angular.
 
-## Development server
+El repositorio esta divido en ramas, cada una de las cuales se corresponde con una etapa del desarrollo de la aplicación.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Enlaces de los Videos
 
-## Code scaffolding
+@ngrx/store [aquí](https://youtu.be/btFk-R3tVjo)
+@ngrx/effects _En producción_
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Ramas (Branches)
 
-## Build
+- [Estado inicial](https://github.com/ako-tech/ngrx-basic-todo)
+- [@ngrx/store](https://github.com/ako-tech/ngrx-basic-todo/tree/ngrx/store)
+- @ngrx/effects
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Observaciones
 
-## Running unit tests
+El único objetivo de este proyecto es mostrar las caracteristicas principales de las librerías de NgRx. Debido a esto, una parte del código esta simplificado para una mostrar dichas caracteristicas más claramente. Incluyendo entre otras cosas el CSS imprescindible para mostrar la aplicación correctamente única y exclusivamente en los videos del mismo y para una anchura del visor de 500px.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Este proyecto **NO** está pensado para producción.
 
-## Running end-to-end tests
+## Comandos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+El proyecto está realizado sobre la v13 de Angular.
 
-## Further help
+Para levantar un servidor de desarrollo usar el comando `ng serve`. Este estará disponible en `http://localhost:4200/`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para compilar la aplicación usar el comando `ng build`. Pudiendo usar la opcion `--prod` para compilar la versión de producción. Los archivos de la aplicación estarán disponibles en la carpeta `dist/`.
