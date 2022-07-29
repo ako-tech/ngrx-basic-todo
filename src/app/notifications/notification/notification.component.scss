@@ -1,0 +1,15 @@
+:host {
+  position: absolute;
+  max-width: 400px;
+  display: grid;
+  place-items: center;
+  padding: var(--half-separation) var(--base-separation);
+  color: #fff;
+  font-weight: 500;
+  background-color: #4ea24f;
+  border-radius: 4px;
+
+  &.error {
+    background-color: #be4646;
+  }
+}

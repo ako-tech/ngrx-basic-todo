@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpBackend } from '@angular/common/http';
 
 import { StoreModule } from '@ngrx/store';
@@ -8,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { environment } from '../environments/environment';
 import { TodosModule } from './todos/todos.module';
+import { NotificationsModule } from './notifications/notifications.module';
 import { FakeBackend, FakeBackendModule } from './fake-backend';
 
 import { AppComponent } from './app.component';
@@ -16,8 +18,10 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     TodosModule,
     FakeBackendModule,
+    NotificationsModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

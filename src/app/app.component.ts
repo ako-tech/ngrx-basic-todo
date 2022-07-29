@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <ako-fake-backend-toogle></ako-fake-backend-toogle>
     <ako-todos></ako-todos>
+    <ako-notifications-container></ako-notifications-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
