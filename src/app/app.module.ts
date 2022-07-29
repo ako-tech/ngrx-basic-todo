@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpBackend } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { TodosModule } from './todos/todos.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+
+import { environment } from '../environments/environment';
+import { TodosModule } from './todos/todos.module';
+import { FakeBackend, FakeBackendModule } from './fake-backend';
+
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     TodosModule,
+    FakeBackendModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
@@ -20,7 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
     }),
     EffectsModule.forRoot([]),
   ],
-  providers: [],
+  providers: [{ provide: HttpBackend, useClass: FakeBackend }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
