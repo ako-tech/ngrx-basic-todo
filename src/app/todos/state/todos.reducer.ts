@@ -18,7 +18,7 @@ export const todosReducer = createReducer(
     ...currentState,
     todos: action.todos,
   })),
-  on(TodosPageActions.addTodo, (currentState, action) => ({
+  on(TodosApiActions.addTodoSuccess, (currentState, action) => ({
     ...currentState,
     todos: [...currentState.todos, action.todo],
   })),

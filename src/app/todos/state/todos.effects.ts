@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map, of, tap } from 'rxjs';
+import { catchError, concatMap, exhaustMap, map, of, tap } from 'rxjs';
 import { NotificationsService } from 'src/app/notifications/notifications.service';
 import { TodosApiActions, TodosPageActions } from '.';
 import { TodosService } from '../todos.service';
@@ -32,10 +32,30 @@ export class TodosEffects {
     )
   );
 
+  addTodo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodosPageActions.addTodo),
+      concatMap((action) =>
+        this.todosService.create(action.todo).pipe(
+          map((savedTodo) =>
+            TodosApiActions.addTodoSuccess({ todo: savedTodo })
+          ),
+          catchError(() =>
+            of(
+              TodosApiActions.addTodoError({
+                errorMessage: `Ha ocurrido un error al intentar guardar la tarea: "${action.todo.description}"`,
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
   notifyApiError$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(TodosApiActions.loadAllError),
+        ofType(TodosApiActions.loadAllError, TodosApiActions.addTodoError),
         tap((action) => this.notificationsService.error(action.errorMessage))
       ),
     { dispatch: false }

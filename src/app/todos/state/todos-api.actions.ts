@@ -9,3 +9,12 @@ export const loadAllError = createAction(
   '[Todos API] Load All Error',
   props<{ errorMessage: string }>()
 );
+
+export const addTodoSuccess = createAction(
+  '[Todos API] Add Todo Success',
+  props<{ todo: Todo }>()
+);
+export const addTodoError = createAction(
+  '[Todos API] Add Todo Error',
+  props<{ errorMessage: string }>()
+);
