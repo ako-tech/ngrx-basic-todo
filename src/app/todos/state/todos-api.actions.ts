@@ -26,3 +26,12 @@ export const markAsCompletedError = createAction(
   '[Todos API] Mark Todo As Completed Error',
   props<{ todo: Todo; errorMessage: string }>()
 );
+
+export const clearCompletedSuccess = createAction(
+  '[Todos API] Clear Completed Success',
+  props<{ deletedTodos: Todo[] }>()
+);
+export const clearCompletedError = createAction(
+  '[Todos API] Clear Completed Error',
+  props<{ errorMessage: string }>()
+);

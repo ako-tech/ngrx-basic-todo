@@ -42,8 +42,13 @@ export const todosReducer = createReducer(
       ),
     })
   ),
-  on(TodosPageActions.clearCompleted, (currentState) => ({
-    ...currentState,
-    todos: currentState.todos.filter((todo) => todo.completed === false),
+  on(TodosApiActions.clearCompletedSuccess, (state, action) => ({
+    ...state,
+    todos: state.todos.filter(
+      (item) =>
+        action.deletedTodos.find(
+          (deletedTodo) => deletedTodo.id === item.id
+        ) === undefined
+    ),
   }))
 );

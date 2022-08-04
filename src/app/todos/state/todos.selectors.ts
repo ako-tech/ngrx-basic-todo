@@ -11,3 +11,7 @@ export const todos = createSelector(
 export const hasCompletedTodos = createSelector(todos, (todos) =>
   todos.some((todo) => todo.completed)
 );
+
+export const completedTodos = createSelector(todos, (todos) =>
+  todos.filter((todo) => todo.completed)
+);
