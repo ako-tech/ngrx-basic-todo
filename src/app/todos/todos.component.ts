@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { createTodo, initialTodos, Todo } from './model';
+import { createTodo, Todo } from './model';
 import { TodosPageActions, TodosSelectors } from './state';
 
 @Component({

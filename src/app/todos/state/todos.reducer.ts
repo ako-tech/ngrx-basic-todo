@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { TodosPageActions } from '.';
-import { initialTodos, Todo } from '../model';
+import { TodosApiActions, TodosPageActions } from '.';
+import { Todo } from '../model';
 
 export const todosStateFeatureKey = 'todosState';
 
@@ -14,9 +14,9 @@ const initialState: TodosState = {
 
 export const todosReducer = createReducer(
   initialState,
-  on(TodosPageActions.init, (currentState) => ({
+  on(TodosApiActions.loadAllSuccess, (currentState, action) => ({
     ...currentState,
-    todos: initialTodos,
+    todos: action.todos,
   })),
   on(TodosPageActions.addTodo, (currentState, action) => ({
     ...currentState,
