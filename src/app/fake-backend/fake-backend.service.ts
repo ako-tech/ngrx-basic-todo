@@ -12,7 +12,7 @@ import { createErrorResponse, createSuccesfulResponse } from './helpers';
 
 @Injectable()
 export class FakeBackend extends HttpBackend {
-  private online = new BehaviorSubject<boolean>(true);
+  private online = new BehaviorSubject<boolean>(false);
   serverStatus$ = this.online.asObservable();
 
   constructor() {
