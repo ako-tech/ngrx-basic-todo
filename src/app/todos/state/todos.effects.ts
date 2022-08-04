@@ -52,10 +52,33 @@ export class TodosEffects {
     )
   );
 
+  markTodoAsCompleted$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodosPageActions.markAsCompleted),
+      concatMap((action) =>
+        this.todosService.update(action.todo).pipe(
+          map(() => TodosApiActions.markAsCompletedSuccess()),
+          catchError(() =>
+            of(
+              TodosApiActions.markAsCompletedError({
+                todo: action.todo,
+                errorMessage: `Ha ocurrido un error al intentar marcar la tarea "${action.todo.description}" como completada.`,
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
   notifyApiError$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(TodosApiActions.loadAllError, TodosApiActions.addTodoError),
+        ofType(
+          TodosApiActions.loadAllError,
+          TodosApiActions.addTodoError,
+          TodosApiActions.markAsCompletedError
+        ),
         tap((action) => this.notificationsService.error(action.errorMessage))
       ),
     { dispatch: false }

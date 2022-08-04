@@ -32,12 +32,16 @@ export const todosReducer = createReducer(
       todo.id === action.todo.id ? { ...todo, completed: true } : todo
     ),
   })),
-  on(TodosPageActions.markAsPending, (currentState, action) => ({
-    ...currentState,
-    todos: currentState.todos.map((todo) =>
-      todo.id === action.todo.id ? { ...todo, completed: false } : todo
-    ),
-  })),
+  on(
+    TodosPageActions.markAsPending,
+    TodosApiActions.markAsCompletedError,
+    (currentState, action) => ({
+      ...currentState,
+      todos: currentState.todos.map((todo) =>
+        todo.id === action.todo.id ? { ...todo, completed: false } : todo
+      ),
+    })
+  ),
   on(TodosPageActions.clearCompleted, (currentState) => ({
     ...currentState,
     todos: currentState.todos.filter((todo) => todo.completed === false),
