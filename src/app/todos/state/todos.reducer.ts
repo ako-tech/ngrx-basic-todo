@@ -22,7 +22,7 @@ export const todosReducer = createReducer(
     ...currentState,
     todos: [...currentState.todos, action.todo],
   })),
-  on(TodosPageActions.removeTodo, (currentState, action) => ({
+  on(TodosApiActions.removeTodoSuccess, (currentState, action) => ({
     ...currentState,
     todos: currentState.todos.filter((todo) => todo.id !== action.todo.id),
   })),

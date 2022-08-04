@@ -61,6 +61,23 @@ export class TodosEffects {
       )
     )
   );
+  removeTodo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodosPageActions.removeTodo),
+      mergeMap((action) =>
+        this.todosService.delete(action.todo).pipe(
+          map(() => TodosApiActions.removeTodoSuccess({ todo: action.todo })),
+          catchError(() =>
+            of(
+              TodosApiActions.removeTodoError({
+                errorMessage: `Ha ocurrido un error al intentar borrar la tarea: "${action.todo.description}"`,
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 
   markTodoAsCompleted$ = createEffect(() =>
     this.actions$.pipe(
@@ -110,6 +127,7 @@ export class TodosEffects {
         ofType(
           TodosApiActions.loadAllError,
           TodosApiActions.addTodoError,
+          TodosApiActions.removeTodoError,
           TodosApiActions.markAsCompletedError,
           TodosApiActions.clearCompletedError
         ),

@@ -19,6 +19,15 @@ export const addTodoError = createAction(
   props<{ errorMessage: string }>()
 );
 
+export const removeTodoSuccess = createAction(
+  '[Todos API] Remove Todo Success',
+  props<{ todo: Todo }>()
+);
+export const removeTodoError = createAction(
+  '[Todos API] Remove Todo Error',
+  props<{ errorMessage: string }>()
+);
+
 export const markAsCompletedSuccess = createAction(
   '[Todos API] Mark Todo As Completed Success'
 );
