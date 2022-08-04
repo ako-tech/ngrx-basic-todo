@@ -36,6 +36,14 @@ export const markAsCompletedError = createAction(
   props<{ todo: Todo; errorMessage: string }>()
 );
 
+export const markAsPendingSuccess = createAction(
+  '[Todos API] Mark Todo As Pending Success'
+);
+export const markAsPendingError = createAction(
+  '[Todos API] Mark Todo As Pending Error',
+  props<{ todo: Todo; errorMessage: string }>()
+);
+
 export const clearCompletedSuccess = createAction(
   '[Todos API] Clear Completed Success',
   props<{ deletedTodos: Todo[] }>()

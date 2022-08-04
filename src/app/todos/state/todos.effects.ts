@@ -97,6 +97,24 @@ export class TodosEffects {
       )
     )
   );
+  markTodoAsPending$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodosPageActions.markAsPending),
+      concatMap((action) =>
+        this.todosService.update(action.todo).pipe(
+          map(() => TodosApiActions.markAsPendingSuccess()),
+          catchError(() =>
+            of(
+              TodosApiActions.markAsPendingError({
+                todo: action.todo,
+                errorMessage: `Ha ocurrido un error al intentar marcar la tarea "${action.todo.description}" como pendiente.`,
+              })
+            )
+          )
+        )
+      )
+    )
+  );
 
   clearCompleted$ = createEffect(() =>
     this.actions$.pipe(
@@ -129,6 +147,7 @@ export class TodosEffects {
           TodosApiActions.addTodoError,
           TodosApiActions.removeTodoError,
           TodosApiActions.markAsCompletedError,
+          TodosApiActions.markAsPendingError,
           TodosApiActions.clearCompletedError
         ),
         tap((action) => this.notificationsService.error(action.errorMessage))
