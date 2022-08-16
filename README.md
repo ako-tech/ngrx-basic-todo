@@ -7,13 +7,13 @@ El repositorio esta divido en ramas, cada una de las cuales se corresponde con u
 ## Enlaces de los Videos
 
 - [@ngrx/store](https://youtu.be/btFk-R3tVjo)
-- @ngrx/effects _En producción_
+- [@ngrx/effects](https://youtu.be/WzLJbtCrVTU)
 
 ## Ramas (Branches)
 
 - [Estado inicial](https://github.com/ako-tech/ngrx-basic-todo)
 - [@ngrx/store](https://github.com/ako-tech/ngrx-basic-todo/tree/ngrx/store)
-- @ngrx/effects
+- [@ngrx/effects](https://github.com/ako-tech/ngrx-basic-todo/tree/ngrx/effects)
 
 ## Observaciones
 
