@@ -23,6 +23,8 @@ El único objetivo de este proyecto es mostrar las caracteristicas principales d
 
 Este proyecto **NO** está pensado para producción.
 
+Esta rama de effects incluye un servidor ficticio como un servicio `FakeBackend` para simular las respuestas a las llamadas HTTP que se ven en el video.
+
 ## Comandos
 
 El proyecto está realizado sobre la v13 de Angular.
