@@ -7,7 +7,10 @@ export const todosStateFeatureKey = 'todosState';
 
 export interface TodosState extends EntityState<Todo> {}
 
-export const todosAdapter = createEntityAdapter<Todo>();
+export const todosAdapter = createEntityAdapter<Todo>({
+  // selectId: (todo) => todo.description,
+  // sortComparer: (a, b) => (a.completed < b.completed ? -1 : 1),
+});
 
 const initialState: TodosState = todosAdapter.getInitialState();
 
