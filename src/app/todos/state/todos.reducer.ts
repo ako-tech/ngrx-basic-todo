@@ -5,14 +5,18 @@ import { initialTodos, Todo } from '../model';
 
 export const todosStateFeatureKey = 'todosState';
 
-export interface TodosState extends EntityState<Todo> {}
+export interface TodosState extends EntityState<Todo> {
+  selectedTodo: Todo | null;
+}
 
 export const todosAdapter = createEntityAdapter<Todo>({
   // selectId: (todo) => todo.description,
   // sortComparer: (a, b) => (a.completed < b.completed ? -1 : 1),
 });
 
-const initialState: TodosState = todosAdapter.getInitialState();
+const initialState: TodosState = todosAdapter.getInitialState({
+  selectedTodo: null,
+});
 
 export const todosReducer = createReducer(
   initialState,
@@ -20,7 +24,10 @@ export const todosReducer = createReducer(
     todosAdapter.setAll(initialTodos, currentState)
   ),
   on(TodosPageActions.addTodo, (currentState, action) =>
-    todosAdapter.addOne(action.todo, currentState)
+    todosAdapter.addOne(action.todo, {
+      ...currentState,
+      selectedTodo: action.todo,
+    })
   ),
   on(TodosPageActions.removeTodo, (currentState, action) =>
     todosAdapter.removeOne(action.todo.id, currentState)
@@ -47,5 +54,9 @@ export const todosReducer = createReducer(
   }),
   on(TodosPageActions.clearCompleted, (currentState) =>
     todosAdapter.removeMany((todo) => todo.completed === true, currentState)
-  )
+  ),
+  on(TodosPageActions.selectTodo, (currentState, action) => ({
+    ...currentState,
+    selectedTodo: action.todo,
+  }))
 );

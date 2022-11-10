@@ -17,6 +17,8 @@ export class TodosComponent implements OnInit {
     TodosSelectors.hasCompletedTodos
   );
 
+  selectedTodo$ = this.store.select(TodosSelectors.selectedTodo);
+
   constructor(private store: Store) {}
 
   ngOnInit(): void {

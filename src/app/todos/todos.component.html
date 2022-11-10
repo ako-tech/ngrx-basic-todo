@@ -7,7 +7,7 @@
   (reopened)="markAsPending(todo)"
   (completed)="markAsCompleted(todo)"
   (click)="selectTodo(todo)"
-  [class.selected]=""
+  [class.selected]="todo === (selectedTodo$ | async)"
 ></ako-todo>
 
 <button

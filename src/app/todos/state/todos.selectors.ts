@@ -14,3 +14,8 @@ export const todos = createSelector(todosState, todosSelectors.selectAll);
 export const hasCompletedTodos = createSelector(todos, (todos) =>
   todos.some((todo) => todo.completed)
 );
+
+export const selectedTodo = createSelector(
+  todosState,
+  (state) => state.selectedTodo
+);
