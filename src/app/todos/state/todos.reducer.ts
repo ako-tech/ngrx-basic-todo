@@ -1,45 +1,48 @@
+import { createEntityAdapter, EntityState, Update } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { TodosPageActions } from '.';
 import { initialTodos, Todo } from '../model';
 
 export const todosStateFeatureKey = 'todosState';
 
-export interface TodosState {
-  todos: Todo[];
-}
+export interface TodosState extends EntityState<Todo> {}
 
-const initialState: TodosState = {
-  todos: [],
-};
+export const todosAdapter = createEntityAdapter<Todo>();
+
+const initialState: TodosState = todosAdapter.getInitialState();
 
 export const todosReducer = createReducer(
   initialState,
-  on(TodosPageActions.init, (currentState) => ({
-    ...currentState,
-    todos: initialTodos,
-  })),
-  on(TodosPageActions.addTodo, (currentState, action) => ({
-    ...currentState,
-    todos: [...currentState.todos, action.todo],
-  })),
-  on(TodosPageActions.removeTodo, (currentState, action) => ({
-    ...currentState,
-    todos: currentState.todos.filter((todo) => todo.id !== action.todo.id),
-  })),
-  on(TodosPageActions.markAsCompleted, (currentState, action) => ({
-    ...currentState,
-    todos: currentState.todos.map((todo) =>
-      todo.id === action.todo.id ? { ...todo, completed: true } : todo
-    ),
-  })),
-  on(TodosPageActions.markAsPending, (currentState, action) => ({
-    ...currentState,
-    todos: currentState.todos.map((todo) =>
-      todo.id === action.todo.id ? { ...todo, completed: false } : todo
-    ),
-  })),
-  on(TodosPageActions.clearCompleted, (currentState) => ({
-    ...currentState,
-    todos: currentState.todos.filter((todo) => todo.completed === false),
-  }))
+  on(TodosPageActions.init, (currentState) =>
+    todosAdapter.setAll(initialTodos, currentState)
+  ),
+  on(TodosPageActions.addTodo, (currentState, action) =>
+    todosAdapter.addOne(action.todo, currentState)
+  ),
+  on(TodosPageActions.removeTodo, (currentState, action) =>
+    todosAdapter.removeOne(action.todo.id, currentState)
+  ),
+  on(TodosPageActions.markAsCompleted, (currentState, action) => {
+    const updateOb: Update<Todo> = {
+      id: action.todo.id,
+      changes: {
+        completed: true,
+      },
+    };
+
+    return todosAdapter.updateOne(updateOb, currentState);
+  }),
+  on(TodosPageActions.markAsPending, (currentState, action) => {
+    const updateOb: Update<Todo> = {
+      id: action.todo.id,
+      changes: {
+        completed: false,
+      },
+    };
+
+    return todosAdapter.updateOne(updateOb, currentState);
+  }),
+  on(TodosPageActions.clearCompleted, (currentState) =>
+    todosAdapter.removeMany((todo) => todo.completed === true, currentState)
+  )
 );
