@@ -43,4 +43,8 @@ export class TodosComponent implements OnInit {
   clearCompleted(): void {
     this.store.dispatch(TodosPageActions.clearCompleted());
   }
+
+  selectTodo(todo: Todo): void {
+    this.store.dispatch(TodosPageActions.selectTodo({ todo }));
+  }
 }

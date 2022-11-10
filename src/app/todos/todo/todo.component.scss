@@ -12,11 +12,15 @@
       text-decoration: line-through;
     }
   }
+
+  &.selected {
+    background-color: #ddcaf8;
+  }
 }
 
 span {
   flex-grow: 1;
-  padding: 0 var(--base-separation)
+  padding: 0 var(--base-separation);
 }
 
 button {
@@ -25,10 +29,10 @@ button {
   background: none;
   border: none;
 
-  &.remove{
+  &.remove {
     opacity: 0.7;
 
-    &:hover{
+    &:hover {
       opacity: 1;
     }
   }

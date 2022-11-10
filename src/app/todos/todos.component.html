@@ -6,6 +6,8 @@
   (removed)="removeTodo(todo)"
   (reopened)="markAsPending(todo)"
   (completed)="markAsCompleted(todo)"
+  (click)="selectTodo(todo)"
+  [class.selected]=""
 ></ako-todo>
 
 <button

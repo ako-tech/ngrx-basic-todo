@@ -24,3 +24,8 @@ export const markAsPending = createAction(
 );
 
 export const clearCompleted = createAction('[Todos Page] Clear Completed');
+
+export const selectTodo = createAction(
+  '[Todos Page] Select Todo',
+  props<{ todo: Todo }>()
+);
