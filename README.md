@@ -8,12 +8,14 @@ El repositorio esta divido en ramas, cada una de las cuales se corresponde con u
 
 - [@ngrx/store](https://youtu.be/btFk-R3tVjo)
 - [@ngrx/effects](https://youtu.be/WzLJbtCrVTU)
+- [@ngrx/entity](https://youtu.be/3m3GEutSm-s)
 
 ## Ramas (Branches)
 
 - [Estado inicial](https://github.com/ako-tech/ngrx-basic-todo)
 - [@ngrx/store](https://github.com/ako-tech/ngrx-basic-todo/tree/ngrx/store)
 - [@ngrx/effects](https://github.com/ako-tech/ngrx-basic-todo/tree/ngrx/effects)
+- [@ngrx/entity](https://github.com/ako-tech/ngrx-basic-todo/tree/ngrx/entity)
 
 ## Observaciones
 
